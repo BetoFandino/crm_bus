@@ -1,2 +1,16 @@
 apps/users/api/__pycache__/
+apps/employees/__pycache__/
 
+*/__pycache__
+__pycache__/
+__pycache__
+.crm_bus/__pycache__/
+*.py[cod]
+*.pyc
+/crm_bus/__pycache__/
+
+/.idea/
+/venv/
+*.log
+*.env
+*.db
