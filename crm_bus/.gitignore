@@ -1,7 +1,8 @@
 apps/users/api/__pycache__/
+apps/users/__pycache__/
 apps/employees/__pycache__/
 
-*/__pycache__
+**/__pycache__/
 __pycache__/
 __pycache__
 .crm_bus/__pycache__/
