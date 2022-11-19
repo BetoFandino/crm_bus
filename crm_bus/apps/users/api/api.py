@@ -5,12 +5,13 @@ from rest_framework import viewsets, status
 
 
 from apps.users.models import User
-from apps.users.api.serializers import UserSerializer, UpdateUserSerializer
+from apps.users.api.serializers import UserSerializer, UpdateUserSerializer, ListUserSerializer
 
 
 class UserViewSet(viewsets.GenericViewSet):
     model = User
     serializer_class = UserSerializer
+    list_serializer_class = ListUserSerializer
     queryset = None
 
     def get_object(self, pk):
@@ -20,6 +21,11 @@ class UserViewSet(viewsets.GenericViewSet):
         if self.queryset is None:
             self.queryset = self.model.objects.filter(is_active=True).values('id', 'username', 'email', 'name')
         return self.queryset
+
+    def list(self, request):
+        users = self.get_queryset()
+        users_serializer = self.list_serializer_class(users, many=True)
+        return Response(users_serializer.data, status=status.HTTP_200_OK)
 
     def create(self, request):
         user_serializer = self.serializer_class(data=request.data)
