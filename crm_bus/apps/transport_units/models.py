@@ -40,5 +40,3 @@ class TransportUnit(BaseModel):
         verbose_name = 'Transport Unit'
         verbose_name_plural = 'Transports Units'
 
-    def __str__(self):
-        return self.unit_id
