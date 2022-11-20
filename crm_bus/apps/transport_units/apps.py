@@ -3,4 +3,4 @@ from django.apps import AppConfig
 
 class TransportUnitsConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'transport_units'
+    name = 'apps.transport_units'
