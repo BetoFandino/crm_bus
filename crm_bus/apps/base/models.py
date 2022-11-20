@@ -4,7 +4,7 @@ from simple_history.models import HistoricalRecords
 
 
 class BaseModel(models.Model):
-    """model base to be inherited for other models with dis params"""
+    """model base to be inherited for other models with this params"""
     id = models.AutoField(primary_key=True)
     state = models.BooleanField(default=True)
     created_date = models.DateField(auto_now=False, auto_now_add=True)
