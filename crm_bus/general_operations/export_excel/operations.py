@@ -105,7 +105,7 @@ class MakeExcelData(object):
                 list_name.append(each)
         title = "".join(list_name)
         name = title + '_' + date_now + '.xls'
-        return_filename = os.path.join('template/', name)
+        return_filename = os.path.join('crm_bus/template/', name)
         return return_filename
 
     def excel_generator(self):
@@ -161,11 +161,11 @@ class MakeExcelData(object):
 
     def delete_excel(self, max_files):
         initial_count = 0
-        for path in pathlib.Path('template/').iterdir():
+        for path in pathlib.Path('crm_bus/template/').iterdir():
             if path.is_file():
                 initial_count += 1
 
         if initial_count > max_files:
-            files = os.listdir('template/')
+            files = os.listdir('crm_bus/template/')
             for name in files:
-                os.remove(os.path.join('template/', name))
+                os.remove(os.path.join('crm_bus/template/', name))

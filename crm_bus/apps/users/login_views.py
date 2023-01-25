@@ -1,4 +1,4 @@
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, login, logout
 
 from rest_framework import status
 from rest_framework.generics import GenericAPIView
@@ -24,17 +24,11 @@ class Login(TokenObtainPairView):
         )
 
         if user:
-            login_serializer = self.serializer_class(data=request.data)
-            if login_serializer.is_valid():
-                user_serializer = CustomUserSerializer(user)
-                return Response({
-                    'token': login_serializer.validated_data.get('access'),
-                    'refresh-token': login_serializer.validated_data.get('refresh'),
-                    'user': user_serializer.data,
-                    'message': 'login success'
-                }, status=status.HTTP_200_OK)
+            login(request, user)
+
+            return Response({'message': 'exitooo'})
+        else:
             return Response({'error': 'username or password incorrect'}, status=status.HTTP_400_BAD_REQUEST)
-        return Response({'error': 'username or password incorrect'}, status=status.HTTP_400_BAD_REQUEST)
 
 
 class Logout(GenericAPIView):
